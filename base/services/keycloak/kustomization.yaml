@@ -1,0 +1,4 @@
+namespace: keycloak
+resources:
+  - helm.yaml
+  #- ingressroute.yaml

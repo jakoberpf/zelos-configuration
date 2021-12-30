@@ -1,0 +1,5 @@
+namespace: iam
+bases: 
+  - ../../../base/services/keycloak
+resources:
+  - namespace.yaml
