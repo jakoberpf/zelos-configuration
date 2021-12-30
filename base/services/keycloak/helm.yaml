@@ -21,8 +21,8 @@ spec:
       type: ClusterIP
     postgresql:
       image:
-        repository: postgres
-        tag: 11.13-alpine
+        repository: jakoberpf/postgresql
+        tag: 13-debian-10
   interval: 10m0s
 
 ---
