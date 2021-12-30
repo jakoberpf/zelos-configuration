@@ -1,0 +1,6 @@
+# macOS spotligth
+*.DS_Store
+
+# secrets
+*.kube
+*.envrc
