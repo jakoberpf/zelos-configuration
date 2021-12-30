@@ -21,7 +21,7 @@ spec:
       type: ClusterIP
     postgresql:
       image:
-        repository: postgresql
+        repository: postgres
   interval: 10m0s
 
 ---
