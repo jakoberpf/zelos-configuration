@@ -1,5 +1,5 @@
 namespace: vaultwarden
-bases: 
-  - ../../../base/services/bashhub
+# bases: 
+#   - ../../../base/services/vaultwarden
 resources:
   - namespace.yaml
