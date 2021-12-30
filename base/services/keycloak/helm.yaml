@@ -19,6 +19,9 @@ spec:
       tag: 15.0.1
     service:
       type: ClusterIP
+    postgresql:
+      image:
+        repository: postgresql
   interval: 10m0s
 
 ---
