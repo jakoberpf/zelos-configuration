@@ -1,0 +1,5 @@
+namespace: vaultwarden
+bases: 
+  - ../../../base/services/bashhub
+resources:
+  - namespace.yaml
