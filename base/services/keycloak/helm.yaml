@@ -15,8 +15,8 @@ spec:
       version: 5.1.6
   values:
     image: 
-      repository: mihaibob/keycloak
-      tag: 15.0.1
+      repository: jakoberpf/keycloak
+      tag: 15.1.1-debian-10
     service:
       type: ClusterIP
     postgresql:
