@@ -11,7 +11,7 @@ spec:
       kind: Rule
       services: # Service to redirect requests to
         - name: keycloak
-          port: 443
+          port: 80
   tls:
     secretName: iam-erpf-de-tls
     
