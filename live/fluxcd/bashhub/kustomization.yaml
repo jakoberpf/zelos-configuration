@@ -1,0 +1,5 @@
+namespace: bashhub
+bases: 
+  - ../../../base/services/bashhub
+resources:
+  - namespace.yaml
