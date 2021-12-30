@@ -19,6 +19,9 @@ spec:
       - name: bashhub
         image: ephemera/bashhub-server # TODO make own container with jakoberpf/bashhub-server
         imagePullPolicy: Always
+        env:
+          - name: BH_URL
+            value: https://bashhub.erpf.de
         ports:
         - containerPort: 8080
           name: http
