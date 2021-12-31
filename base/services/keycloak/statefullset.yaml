@@ -15,6 +15,15 @@ spec:
       labels:
         app: keycloak
     spec:
+      initContainers:
+        - name: alpine
+          image: alpine
+          imagePullPolicy: IfNotPresent
+          command:
+            - mkdir -p /opt/jboss/keycloak/standalone/data/content
+          volumeMounts:
+            - name: keycloak
+              mountPath: /opt/jboss/keycloak/standalone/data
       containers:
       - name: keycloak
         image: carlosedp/keycloak:v11.0.2
