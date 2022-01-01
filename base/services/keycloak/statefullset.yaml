@@ -50,11 +50,11 @@ spec:
         #   limits:
         #     memory: "128Mi"
         #     cpu: "500m"
-        volumeMounts:
-        - name: keycloak
-          mountPath: /opt/jboss/keycloak/standalone/data
-      volumes:
-        - name: keycloak
-          persistentVolumeClaim:
-            claimName: keycloak
+      #   volumeMounts:
+      #   - name: keycloak
+      #     mountPath: /opt/jboss/keycloak/standalone/data
+      # volumes:
+      #   - name: keycloak
+      #     persistentVolumeClaim:
+      #       claimName: keycloak
 
