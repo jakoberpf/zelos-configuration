@@ -32,7 +32,10 @@ spec:
           - name: KEYCLOAK_USER
             value: "admin"
           - name: KEYCLOAK_PASSWORD
-            value: "admin"
+            valueFrom:
+              secretKeyRef:
+                name: keycloak-admin-secret
+                key: KEYCLOAK_PASSWORD
           - name: PROXY_ADDRESS_FORWARDING
             value: "true"
         ports:
