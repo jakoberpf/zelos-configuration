@@ -19,7 +19,7 @@ spec:
         - name: alpine
           image: alpine
           imagePullPolicy: IfNotPresent
-          command: ["/bin/sh","-c","mkdir -p /opt/jboss/keycloak/standalone/data/content && chmod -R 777 /opt/jboss/keycloak/standalone/data/content"]
+          command: ["/bin/sh","-c","mkdir -p /opt/jboss/keycloak/standalone/data/content && chmod -R 777 /opt/jboss/keycloak/standalone/data"]
           volumeMounts:
             - name: keycloak
               mountPath: /opt/jboss/keycloak/standalone/data
