@@ -1,0 +1,30 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: superalgos
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`superalgos.erpf.de`)
+      kind: Rule
+      services:
+        - name: superalgos
+          port: 80
+  tls:
+    secretName: superalgos-erpf-de-tls
+    
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: superalgos-erpf-de-tls
+spec:
+  secretName: superalgos-erpf-de-tls
+  issuerRef:
+    name: cloudflare-letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: superalgos.erpf.de
+  dnsNames:
+  - "superalgos.erpf.de"
