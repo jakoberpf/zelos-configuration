@@ -1,5 +1,0 @@
-namespace: superalgos
-# bases: 
-#   - ../../../base/services/superalgos
-resources:
-  - ingressroute.yaml
