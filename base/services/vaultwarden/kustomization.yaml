@@ -1,7 +1,0 @@
-namespace: vaultwarden
-resources:
-  - configmap.yaml
-  - rbac.yaml
-  - deployment.yaml
-  - service.yaml
-  - ingressroute.yaml

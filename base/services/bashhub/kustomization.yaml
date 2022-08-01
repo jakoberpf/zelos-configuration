@@ -1,5 +1,0 @@
-namespace: bashhub
-resources:
-  - deployment.yaml
-  - service.yaml
-  - ingressroute.yaml

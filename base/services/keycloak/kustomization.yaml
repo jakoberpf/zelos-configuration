@@ -1,6 +1,0 @@
-namespace: keycloak
-resources:
-  # - helm.yaml
-  - statefullset.yaml
-  - service.yaml
-  - ingressroute.yaml
