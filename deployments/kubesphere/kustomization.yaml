@@ -1,0 +1,5 @@
+namespace: kubesphere-system
+resources:
+  - certificates.yaml
+  - virtualservice.yaml
+  - gateway.yaml

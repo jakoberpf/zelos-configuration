@@ -1,0 +1,19 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: kubesphere
+spec:
+  hosts:
+    - kubesphere.erpf.de
+  gateways:
+    - kubesphere
+  http:
+    - match:
+      - uri:
+          prefix: /
+      route:
+      - destination:
+          port:
+            number: 80
+          host: ks-console
