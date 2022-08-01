@@ -1,5 +1,0 @@
-namespace: vaultwarden
-bases: 
-  - ../../../base/services/vaultwarden
-resources:
-  - namespace.yaml
