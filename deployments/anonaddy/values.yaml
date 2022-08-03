@@ -1,0 +1,13 @@
+ingress:
+  enabled: true
+  hosts: 
+    - host: anonaddy.erpf.de
+  tls:
+    enabled: true
+    redirect: false
+  istioGateway:
+    enabled: true
+  certManager:
+    enabled: true
+    issuerRef: 
+      name: cloudflare-letsencrypt-staging
