@@ -1,4 +1,4 @@
-teleport-cluster: 
+teleport-cluster:
   persistence:
     enabled: true
 ingress:
@@ -13,4 +13,4 @@ ingress:
   certManager:
     enabled: true
     issuerRef: 
-      name: cloudflare-letsencrypt-staging
+      name: cloudflare-letsencrypt-prod
