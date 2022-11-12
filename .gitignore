@@ -30,6 +30,7 @@ override.tf.json
 *identity.secret
 *.venv
 *.ssh
+*.oci
 *.kube
 *backend.conf
 *terragrunt.json
