@@ -11,6 +11,8 @@ spec:
         number: 80
         name: http
         protocol: HTTP
+      tls:
+        httpsRedirect: true
       hosts:
         - kubesphere.erpf.de
     - port:
@@ -22,3 +24,30 @@ spec:
         credentialName: kubesphere-tls
       hosts:
         - kubesphere.erpf.de
+
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: kubesphere-cluster
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      tls:
+        httpsRedirect: true
+      hosts:
+        - kubesphere.zelos.k8s.erpf.de
+    - port:
+        number: 443
+        name: https
+        protocol: HTTPS
+      tls:
+        mode: "SIMPLE"
+        credentialName: kubesphere-cluster-tls
+      hosts:
+        - kubesphere.zelos.k8s.erpf.de

@@ -6,8 +6,10 @@ metadata:
 spec:
   hosts:
     - kubesphere.erpf.de
+    - kubesphere.zelos.k8s.erpf.de
   gateways:
     - kubesphere
+    - kubesphere-cluster
   http:
     - match:
       - uri:

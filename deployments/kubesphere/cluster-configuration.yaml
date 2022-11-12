@@ -5,14 +5,13 @@ metadata:
   name: ks-installer
   namespace: kubesphere-system
   labels:
-    version: v3.3.0
+    version: v3.3.1
 spec:
   persistence:
     storageClass: ""        # If there is no default StorageClass in your cluster, you need to specify an existing StorageClass here.
   authentication:
     jwtSecret: ""           # Keep the jwtSecret consistent with the Host Cluster. Retrieve the jwtSecret by executing "kubectl -n kubesphere-system get cm kubesphere-config -o yaml | grep -v "apiVersion" | grep jwtSecret" on the Host Cluster.
   local_registry: ""        # Add your private registry address if it is needed.
-  # dev_tag: ""               # Add your kubesphere image tag you want to install, by default it's same as ks-installer release version.
   etcd:
     monitoring: false       # Enable or disable etcd monitoring dashboard installation. You have to create a Secret for etcd before you enable it.
     endpointIps: localhost  # etcd cluster EndpointIps. It can be a bunch of IPs here.
@@ -21,13 +20,9 @@ spec:
   common:
     core:
       console:
-        enableMultiLogin: true  # Enable or disable simultaneous logins. It allows different users to log in with the same account at the same time.
+        enableMultiLogin: false  # Enable or disable simultaneous logins. It allows different users to log in with the same account at the same time.
         port: 30880
         type: NodePort
-    # apiserver:            # Enlarge the apiserver and controller manager's resource requests and limits for the large cluster
-    #  resources: {}
-    # controllerManager:
-    #  resources: {}
     redis:
       enabled: false
       enableHA: false
@@ -42,7 +37,7 @@ spec:
       endpoint: http://prometheus-operated.kubesphere-monitoring-system.svc:9090 # Prometheus endpoint to get metrics data.
       GPUMonitoring:     # Enable or disable the GPU-related metrics. If you enable this switch but have no GPU resources, Kubesphere will set it to zero.
         enabled: false
-    gpu:                 # Install GPUKinds. The default GPU kind is nvidia.com/gpu. Other GPU kinds can be added here according to your needs.
+    gpu: # Install GPUKinds. The default GPU kind is nvidia.com/gpu. Other GPU kinds can be added here according to your needs.
       kinds:
       - resourceName: "nvidia.com/gpu"
         resourceType: "GPU"
@@ -146,7 +141,7 @@ spec:
       enabled: false # Enable or disable the KubeSphere App Store.
   servicemesh:         # (0.3 Core, 300 MiB) Provide fine-grained traffic management, observability and tracing, and visualized traffic topology.
     enabled: false     # Base component (pilot). Enable or disable KubeSphere Service Mesh (Istio-based).
-    istio:  # Customizing the istio installation configuration, refer to https://istio.io/latest/docs/setup/additional-setup/customize-installation/
+    istio:
       components:
         ingressGateways:
         - name: istio-ingressgateway
@@ -175,12 +170,6 @@ spec:
         # resources: {}
       # edgeService:
       #   resources: {}
-  gatekeeper:        # Provide admission policy and rule management, A validating (mutating TBA) webhook that enforces CRD-based policies executed by Open Policy Agent.
-    enabled: false   # Enable or disable Gatekeeper.
-    # controller_manager:
-    #   resources: {}
-    # audit:
-    #   resources: {}
   terminal:
     # image: 'alpine:3.15' # There must be an nsenter program in the image
-    timeout: 600         # Container timeout, if set to 0, no timeout will be used. The unit is seconds
+    timeout: 600 # Container timeout, if set to 0, no timeout will be used. The unit is seconds
