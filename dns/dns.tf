@@ -10,8 +10,10 @@ resource "cloudflare_record" "services" {
 locals {
   domains = [
     "kubesphere.erpf.de",
+    "netmaker.erpf.de",
     "teleport.erpf.de",
     "anonaddy.erpf.de",
+    "grafana.erpf.de",
     "mail.erpf.de",
     "iam.erpf.de"
   ]
