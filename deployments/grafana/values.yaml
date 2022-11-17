@@ -1,0 +1,4 @@
+global:
+  dnsService: coredns
+  dnsNamespace: kube-system
+  clusterDomain: cluster.local
