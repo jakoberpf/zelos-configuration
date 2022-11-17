@@ -4,8 +4,7 @@ persistence:
     name: keycloak-data-live
 ingress:
   enabled: true
-  hosts: 
-    - host: iam.erpf.de
+  host: iam.erpf.de
   tls:
     enabled: true
     redirect: false
