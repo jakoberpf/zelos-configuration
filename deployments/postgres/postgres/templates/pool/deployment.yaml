@@ -6,7 +6,7 @@ metadata:
     {{- include "postgres.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.pool.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
@@ -31,8 +31,8 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          image: "{{ .Values.pool.image.repository }}:{{ .Values.pool.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.pool.image.pullPolicy }}
           ports:
             - name: http
               containerPort: 80

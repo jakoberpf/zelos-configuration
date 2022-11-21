@@ -2,17 +2,32 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-postgres:
-  db:
-    name: postgres
-    
-replicaCount: 3
+cluster:
+  replicaCount: 3
+  name: postgres
+  image:
+    repository: jakoberpf/postgres-repmgr
+    pullPolicy: Always
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: ""
+  dbName: postgres
+  clusterName: cluster
+  replicationName: replication
+  nodes:
+    - volume:
+        reclaimPolicy: Delete
+    - volume:
+        reclaimPolicy: Delete
+    - volume:
+        reclaimPolicy: Delete
 
-image:
-  repository: postgres-repmgr
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+pool:
+  replicaCount: 1
+  image:
+    repository: jakoberpf/postgres-repmgr
+    pullPolicy: Always
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: ""
 
 imagePullSecrets: []
 nameOverride: ""
@@ -42,10 +57,10 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 80
+  port: 5432
 
 persistence:
-  enabled: true
+  enabled: false
 
 ingress:
   enabled: false

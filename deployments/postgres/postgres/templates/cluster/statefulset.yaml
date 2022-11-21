@@ -1,13 +1,17 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: {{ include "postgres.fullname" . }}-repmgr
+  name: {{ include "postgres.fullname" . }}-repmgr-node
   labels:
-    {{- include "postgres.labels" . | nindent 4 }}
+    type: cluster
+    system: {{ .Values.cluster.name }}
+    # {{- include "postgres.labels" . | nindent 4 }}
 spec:
+  updateStrategy: 
+    type: RollingUpdate
   serviceName: {{ include "postgres.fullname" . }}
   {{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.cluster.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
@@ -19,7 +23,9 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "postgres.selectorLabels" . | nindent 8 }}
+        type: cluster
+        system: {{ .Values.cluster.name }}
+        # {{- include "postgres.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -32,8 +38,8 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          image: "{{ .Values.cluster.image.repository }}:{{ .Values.cluster.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.cluster.image.pullPolicy }}
           ports:
             - name: http
               containerPort: 80
@@ -51,6 +57,18 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
+            - name: MY_POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: "REPLICATION_PRIMARY_HOST"
+              value: "{{ include "postgres.fullname" . }}-repmgr-0.{{ include "postgres.fullname" . }}-db"
+            - name: "PARTNER_NODES"
+              value: "{{ range $i, $e := .Values.cluster.nodes }}{{ if $i }},{{ end }}{{ $.Values.cluster.name }}-repmgr-node-{{ $i }}.postgres.pod.cluster.local{{ end }}"
+            - name: "NODE_NAME"
+              value: "$(MY_POD_NAME)"
+            - name: "CLUSTER_NODE_NETWORK_NAME"
+              value: "$(MY_POD_NAME).{{ include "postgres.fullname" . }}-db"
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -86,7 +104,6 @@ spec:
         name: pgdata
       spec:
         accessModes: [ "ReadWriteOnce" ]
-        # storageClassName: "my-storage-class"
         resources:
           requests:
             storage: 1Gi

@@ -5,7 +5,7 @@ metadata:
   labels:
     {{- include "postgres.labels" . | nindent 4 }}
 data:
-  app.db.database: "{{ .Values.postgres.db.name }}"
-  app.db.cluster.name: "{{ .Values.postgres.clusterName }}"
-  app.db.cluster.replication.db: "{{ .Values.postgres.replicationDb.name }}"
-  app.db.pool.backends: "{{ range $i, $e := .Values.postgres.nodes }}{{ if $i }},{{ end }}{{ $i }}:{{ $.Values.postDock.name }}-db-node-{{ $i }}.{{ $.Values.postDock.name }}-db::::{{ end }}"
+  app.db.database: "{{ .Values.cluster.dbName }}"
+  app.db.cluster.name: "{{ .Values.cluster.clusterName }}"
+  app.db.cluster.replication.db: "{{ .Values.cluster.replicationName }}"
+  app.db.pool.backends: "{{ range $i, $e := .Values.cluster.nodes }}{{ if $i }},{{ end }}{{ $i }}:{{ $.Values.cluster.name }}-db-node-{{ $i }}.{{ $.Values.cluster.name }}-db::::{{ end }}"
