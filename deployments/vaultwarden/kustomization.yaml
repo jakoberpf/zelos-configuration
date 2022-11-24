@@ -1,0 +1,4 @@
+namespace: vaultwarden
+resources:
+  - namespace.yaml
+  - secrets.yaml

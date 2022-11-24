@@ -1,0 +1,23 @@
+app:
+  domain: https://vaultwarden.erpf.de
+  smtp:
+    host: smtp.strato.de
+    from: bitwarden@jakoberpf.de
+persistence:
+  enabled: true
+  pvc:
+    name: vaultwarden-data-live
+ingress:
+  enabled: true
+  hosts: 
+    - host: vaultwarden.erpf.de
+    - host: bitwarden.erpf.de
+  tls:
+    enabled: true
+    redirect: false
+  istioGateway:
+    enabled: true
+  certManager:
+    enabled: true
+    issuerRef: 
+      name: cloudflare-letsencrypt-prod
