@@ -1,0 +1,39 @@
+ingress:
+  enabled: true
+  hosts: 
+    - host: vault.erpf.de
+  tls:
+    enabled: true
+    redirect: false
+  istioGateway:
+    enabled: true
+  certManager:
+    enabled: true
+    issuerRef: 
+      name: cloudflare-letsencrypt-prod
+vault:
+  server:
+    standalone:
+      enabled: "-"
+      # config is a raw string of default configuration when using a Stateful
+      # deployment. Default is to use a Consul for its HA storage backend.
+      # This should be HCL.
+      config: |
+        ui = true
+        listener "tcp" {
+          tls_disable = 1
+          address = "[::]:8200"
+          cluster_address = "[::]:8201"
+        }
+        storage "s3" {
+          region     = "eu-central-1"
+          bucket     = "hashicorp-vault-backend"
+        }
+    extraSecretEnvironmentVars:
+      - envName: AWS_ACCESS_KEY_ID
+        secretName: aws-credentials
+        secretKey: AWS_ACCESS_KEY_ID
+      - envName: AWS_SECRET_ACCESS_KEY
+        secretName: aws-credentials
+        secretKey: AWS_SECRET_ACCESS_KEY
+
