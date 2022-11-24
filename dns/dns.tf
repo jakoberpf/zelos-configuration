@@ -9,6 +9,9 @@ resource "cloudflare_record" "services" {
 
 locals {
   domains = [
+    "vaultwarden.erpf.de",
+    "bitwarden.erpf.de",
+    "bashhub.erpf.de",
     "kubesphere.erpf.de",
     "netmaker.erpf.de",
     "teleport.erpf.de",
