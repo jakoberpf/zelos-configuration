@@ -1,0 +1,4 @@
+namespace: gatus
+resources:
+  - namespace.yaml
+  - istio.yaml

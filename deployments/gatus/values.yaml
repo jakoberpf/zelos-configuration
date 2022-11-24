@@ -1,0 +1,23 @@
+config:
+  # storage:
+  #   type: postgres
+  #   path: "postgres://user:password@127.0.0.1:5432/gatus?sslmode=disable"
+  # https://github.com/TwiN/gatus#oidc
+  # https://github.com/TwiN/gatus#metrics
+  endpoints:
+    - name: iam
+      url: "https://iam.erpf.de"
+      client:
+        insecure: false
+        ignore-redirect: false
+        timeout: 10s
+      conditions:
+        - "[STATUS] == 200"
+    - name: vaultwarden
+      url: "https://vaultwarden.erpf.de"
+      client:
+        insecure: false
+        ignore-redirect: false
+        timeout: 10s
+      conditions:
+        - "[STATUS] == 200"
