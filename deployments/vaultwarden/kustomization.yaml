@@ -2,3 +2,9 @@ namespace: vaultwarden
 resources:
   - namespace.yaml
   - secrets.yaml
+helmCharts:
+  - name: vaultwarden
+    repo: https://jakoberpf.github.io/charts/
+    version: 0.1.13
+    releaseName: vaultwarden
+    valuesFile: values.yaml
