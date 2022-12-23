@@ -1,3 +1,15 @@
+mariadb:
+  enabled: true
+  persistence:
+    enabled: true
+    pvc: 
+      name: anonaddy-mariadb-data-live
+redis:
+  enabled: true
+  persistence:
+    enabled: true
+    pvc: 
+      name: anonaddy-redis-data-live
 ingress:
   enabled: true
   hosts: 

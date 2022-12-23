@@ -2,5 +2,17 @@
 
 set -eo pipefail
 
-kubectl apply -k .
-helm upgrade --install anonaddy /Users/jakoberpf/Code/jakoberpf/kubernetes/charts/charts/anonaddy --namespace=anonaddy --values=values.yaml
+# view yaml manifest first
+kubectl kustomize --enable-helm
+kubectl kustomize --enable-helm | kubectl apply --dry-run=client -f -
+
+read -p "Are you sure? " -n 1 -r
+echo    # (optional) move to a new line
+if [[ ! $REPLY =~ ^[Yy]$ ]]
+then
+    exit 1
+fi
+
+# apply to kubernetes cluster
+# 'apply' command does not have enable-helm flag
+kubectl kustomize --enable-helm | kubectl apply -f -
