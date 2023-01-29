@@ -13,7 +13,6 @@ locals {
     "bitwarden.erpf.de",
     "bashhub.erpf.de",
     "kubesphere.erpf.de",
-    "netmaker.erpf.de",
     "anonaddy.erpf.de",
     "grafana.erpf.de",
     "vault.erpf.de",
@@ -36,5 +35,7 @@ locals {
     "gatus.erpf.de",
     "teleport.erpf.de",
     "*.teleport.erpf.de",
+    "netmaker.erpf.de",
+    "*.netmaker.erpf.de",
   ]
 }
