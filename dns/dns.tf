@@ -36,6 +36,8 @@ locals {
     "teleport.erpf.de",
     "*.teleport.erpf.de",
     "netmaker.erpf.de",
-    "*.netmaker.erpf.de",
+    "dashboard.netmaker.erpf.de",
+    "api.netmaker.erpf.de",
+    "broker.netmaker.erpf.de",
   ]
 }
