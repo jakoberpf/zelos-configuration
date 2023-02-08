@@ -1,0 +1,5 @@
+namespace: netmaker
+resources:
+  - namespace.yaml
+  - postgres-secret.yaml
+  # - netmaker-secret.yaml

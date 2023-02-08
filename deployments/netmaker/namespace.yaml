@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: netmaker
+  labels:
+    app: netmaker
+    istio-injection: enabled
