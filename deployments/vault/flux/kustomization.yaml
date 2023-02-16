@@ -1,0 +1,5 @@
+namespace: vault
+resources:
+  - namespace.yaml
+  # - helm.yaml
+  # - ingressroute.yaml
