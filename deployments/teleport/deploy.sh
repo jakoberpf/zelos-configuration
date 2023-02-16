@@ -3,4 +3,5 @@
 set -eo pipefail
 
 kubectl apply -k .
-helm upgrade --install teleport erpf/teleport --namespace=teleport --version=0.0.3 --values=values.yaml
+
+helm upgrade --install teleport /Users/jakoberpf/Code/jakoberpf/kubernetes/charts/charts/teleport --namespace=teleport --values=values.yaml
