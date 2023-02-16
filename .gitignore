@@ -39,3 +39,5 @@ override.tf.json
 # local charts
 charts
 /deployments/vault/secret.yaml
+/deployments/postgres/doc
+/deployments/postgres/k8s
