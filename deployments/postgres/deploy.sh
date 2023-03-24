@@ -4,4 +4,4 @@ set -eo pipefail
 
 kubectl apply -k .
 
-helm upgrade --install postgres ./postgres --namespace=postgres # --values=values.yaml
+helm upgrade --install postgres bitnami/postgresql-ha -n postgres
