@@ -1,11 +1,13 @@
 teleport-cluster:
   clusterName: teleport.erpf.de
+  acme: true
   acmeEmail: "jakob@erpf.de"
   persistence:
     enabled: false
     existingClaimName: teleport-data-live
     extraArgs:
       - --insecure-no-tls
+
 ingress:
   enabled: true
   hosts: 
@@ -15,7 +17,3 @@ ingress:
     redirect: true
   istioGateway:
     enabled: true
-  certManager:
-    enabled: true
-    issuerRef: 
-      name: cloudflare-letsencrypt-prod
