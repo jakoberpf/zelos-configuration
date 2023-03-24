@@ -6,6 +6,8 @@ set -eo pipefail
 kubectl kustomize --enable-helm
 kubectl kustomize --enable-helm | kubectl apply --dry-run=client -f -
 
+kubectl apply -f namespace.yaml
+
 read -p "Are you sure? " -n 1 -r
 echo    # (optional) move to a new line
 if [[ ! $REPLY =~ ^[Yy]$ ]]
