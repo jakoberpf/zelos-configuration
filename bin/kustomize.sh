@@ -20,7 +20,7 @@ prettify() {
   # Purple       0;35     Light Purple  1;35
   # Cyan         0;36     Light Cyan    1;36
   # Light Gray   0;37     White         1;37
-  sed -e 's/configured/\\033[1;33mconfigured\\033[0m/g' -e 's/unchanged/\\033[0;32munchanged\\033[0m/g'
+  sed -e 's/configured/\\033[1;33mconfigured\\033[0m/g' -e 's/created/\\033[0;32mcreated\\033[0m/g' -e 's/unchanged/\\033[0;34munchanged\\033[0m/g'
 }
 
 echo "################"
