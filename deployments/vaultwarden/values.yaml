@@ -14,7 +14,7 @@ ingress:
     - host: bitwarden.erpf.de
   tls:
     enabled: true
-    redirect: false
+    redirect: true
   istioGateway:
     enabled: true
   certManager:
