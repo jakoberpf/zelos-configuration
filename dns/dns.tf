@@ -12,6 +12,7 @@ locals {
     "vaultwarden.erpf.de",
     "bitwarden.erpf.de",
     "bashhub.erpf.de",
+    "zerotier.erpf.de",
     "kubesphere.erpf.de",
     "anonaddy.erpf.de",
     "grafana.erpf.de",
