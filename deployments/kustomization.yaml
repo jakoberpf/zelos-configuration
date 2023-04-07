@@ -2,3 +2,4 @@ resources:
   - vault
   - vaultwarden
   - zerotier
+  - gatus
