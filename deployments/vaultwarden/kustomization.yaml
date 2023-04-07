@@ -1,6 +1,5 @@
 namespace: vaultwarden
 resources:
-  - namespace.yaml
   - secrets.yaml
 helmCharts:
   # helm upgrade --install vaultwarden-postgres /Users/jakoberpf/Code/jakoberpf/kubernetes/charts/charts/postgres

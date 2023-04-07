@@ -1,6 +1,5 @@
 namespace: zerotier
 resources:
-  - namespace.yaml
   - secrets.yaml
 helmCharts:
   - name: zerotier-controller
