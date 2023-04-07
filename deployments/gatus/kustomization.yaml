@@ -1,4 +1,10 @@
 namespace: gatus
 resources:
-  - namespace.yaml
-  - istio.yaml
+  - certificate.yaml
+  - gateway.yaml
+  - virtualservice.yaml
+helmCharts:
+  - name: gatus
+    repo: https://minicloudlabs.github.io/helm-charts
+    releaseName: gatus
+    valuesFile: values.yaml

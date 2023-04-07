@@ -29,24 +29,32 @@ config:
         timeout: 10s
       conditions:
         - "[STATUS] == 200"
-    - name: Proxmox - Backup
-      url: "https://backup.proxmox.erpf.de"
+    - name: Zerotier - SDN based on the zerotier protocol
+      url: "https://zerotier.erpf.de"
       client:
         insecure: false
         ignore-redirect: false
         timeout: 10s
       conditions:
         - "[STATUS] == 200"
-    - name: Proxmox - Development
-      url: "https://development.proxmox.erpf.de"
+    - name: Netmaker - SDN based on the wireguard protocol
+      url: "https://dashboard.netmaker.erpf.de"
       client:
         insecure: false
         ignore-redirect: false
         timeout: 10s
       conditions:
         - "[STATUS] == 200"
-    - name: Proxmox - Production
-      url: "https://production.proxmox.erpf.de"
+    - name: Proxmox - Pineapple Cluster
+      url: "https://pineapple.proxmox.erpf.de"
+      client:
+        insecure: false
+        ignore-redirect: false
+        timeout: 10s
+      conditions:
+        - "[STATUS] == 200"
+    - name: Proxmox - Mango Cluster
+      url: "https://mango.proxmox.erpf.de"
       client:
         insecure: false
         ignore-redirect: false
