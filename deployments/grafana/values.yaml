@@ -2,3 +2,9 @@
 #   dnsService: coredns
 #   dnsNamespace: kube-system
 #   clusterDomain: cluster.local
+testFramework:
+  enabled: false
+admin:
+  existingSecret: grafana-admin-credentials
+  userKey: username
+  passwordKey: password

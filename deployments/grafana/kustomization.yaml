@@ -3,8 +3,9 @@ resources:
   - certificate.yaml
   - gateway.yaml
   - virtualservice.yaml
-# helmCharts:
-#   - name: grafana
-#     repo: https://grafana.github.io/helm-charts   
-#     releaseName: grafana
-#     valuesFile: values.yaml
+  - secrets.yaml
+helmCharts:
+  - name: grafana
+    repo: https://grafana.github.io/helm-charts   
+    releaseName: grafana
+    valuesFile: values.yaml
