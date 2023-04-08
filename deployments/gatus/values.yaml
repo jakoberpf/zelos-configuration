@@ -37,6 +37,14 @@ config:
         timeout: 10s
       conditions:
         - "[STATUS] == 200"
+    - name: Grafana - Monitoring and Logging Dashboards
+      url: "https://grafana.erpf.de"
+      client:
+        insecure: false
+        ignore-redirect: false
+        timeout: 10s
+      conditions:
+        - "[STATUS] == 200"
     - name: Netmaker - SDN based on the wireguard protocol
       url: "https://dashboard.netmaker.erpf.de"
       client:
