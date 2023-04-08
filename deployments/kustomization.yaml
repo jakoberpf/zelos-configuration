@@ -3,3 +3,4 @@ resources:
   - vaultwarden
   - zerotier
   - gatus
+  - grafana
