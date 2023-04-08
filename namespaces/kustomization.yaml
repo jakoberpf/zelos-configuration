@@ -2,3 +2,5 @@ resources:
   - vault.yaml
   - vaultwarden.yaml
   - zerotier.yaml
+  - gatus.yaml
+  - grafana.yaml

@@ -1,3 +1,10 @@
 namespace: grafana
 resources:
-  - namespace.yaml
+  - certificate.yaml
+  - gateway.yaml
+  - virtualservice.yaml
+# helmCharts:
+#   - name: grafana
+#     repo: https://grafana.github.io/helm-charts   
+#     releaseName: grafana
+#     valuesFile: values.yaml
