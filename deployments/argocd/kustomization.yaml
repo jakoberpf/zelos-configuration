@@ -1,0 +1,5 @@
+namespace: argocd
+resources:
+  - certificate.yaml
+  - gateway.yaml
+  - virtualservice.yaml
