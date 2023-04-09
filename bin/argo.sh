@@ -10,6 +10,13 @@ else
     echo "Namespace $ARGOCD_NAMESPACE exists, nothing to do"
 fi
 
+if [ ! "$(kubectl get namespaces -o json | jq -r ".items[].metadata | select (.name == \"$ARGOCD_NAMESPACE\") | .labels.\"istio-injection\"")" == "enabled" ]; then
+  echo "INFO: enabling istio injection"
+  kubectl label namespace $ARGOCD_NAMESPACE istio-injection=enabled
+else
+  echo "INFO: istio injection has already been enabled, nothing to do"
+fi
+
 prettify() {
   # Black        0;30     Dark Gray     1;30
   # Red          0;31     Light Red     1;31
@@ -22,4 +29,4 @@ prettify() {
   sed -e 's/configured/\\033[1;33mconfigured\\033[0m/g' -e 's/created/\\033[0;32mcreated\\033[0m/g' -e 's/unchanged/\\033[0;34munchanged\\033[0m/g'
 }
 
-echo "$(kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml | prettify )"
+helm upgrade --install argocd /Users/jakoberpf/Code/jakoberpf/kubernetes/charts/charts/argo-cd --namespace=argocd # --values=values.yaml
