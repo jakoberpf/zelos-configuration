@@ -1,4 +1,5 @@
 resources:
+  - argocd.yaml
   - vault.yaml
   - vaultwarden.yaml
   - zerotier.yaml
