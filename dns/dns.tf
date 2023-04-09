@@ -17,6 +17,7 @@ locals {
     "anonaddy.erpf.de",
     "grafana.erpf.de",
     "vault.erpf.de",
+    "argo.erpf.de",
     "mail.erpf.de",
     "iam.erpf.de"
   ]
