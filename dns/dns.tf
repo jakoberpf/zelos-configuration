@@ -11,6 +11,7 @@ locals {
   domains = [
     "vaultwarden.erpf.de",
     "bitwarden.erpf.de",
+    "owncloud.erpf.de",
     "bashhub.erpf.de",
     "zerotier.erpf.de",
     "kubesphere.erpf.de",
