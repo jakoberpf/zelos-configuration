@@ -1,0 +1,18 @@
+ocis:
+  externalDomain: owncloud.erpf.de
+  features:
+    appsIntegration:
+      enabled: true
+ingress:
+  enabled: true
+  hosts: 
+    - host: owncloud.erpf.de
+  tls:
+    enabled: true
+    redirect: true
+  istioGateway:
+    enabled: true
+  certManager:
+    enabled: true
+    issuerRef: 
+      name: cloudflare-letsencrypt-staging
