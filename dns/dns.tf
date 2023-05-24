@@ -36,6 +36,7 @@ resource "cloudflare_record" "services_unproxied" {
 locals {
   domains_unproxied = [
     "gatus.erpf.de",
+    "gitback.erpf.de",
     "teleport.erpf.de",
     "*.teleport.erpf.de",
     "dashboard.netmaker.erpf.de",
