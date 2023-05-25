@@ -1,0 +1,9 @@
+namespace: minio
+resources:
+  - namespace.yaml
+  - deployment.yaml
+  - service.yaml
+  - secret.yaml
+  - certificate.yaml
+  - gateway.yaml
+  - virtualservice.yaml

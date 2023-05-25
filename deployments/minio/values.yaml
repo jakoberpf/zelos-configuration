@@ -1,0 +1,5 @@
+auth:
+  existingSecret: "minio-root-user"
+defaultBuckets: owncloud
+image:
+  debug: true
