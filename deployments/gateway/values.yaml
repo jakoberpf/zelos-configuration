@@ -1,0 +1,40 @@
+nginx:
+  sites:
+    servers:
+      gitback: 
+        listen:
+          host: gitback.erpf.de
+        destination:
+          protocol: https
+          host: 172.30.175.106
+          port: 443
+      # client-one: 
+      #   listen:
+      #     host: pineapple.proxmox.erpf.de
+      #   destination:
+      #     host: 172.30.119.142
+      #     port: 8006
+      # client-two: 
+      #   listen:
+      #     host: mango.proxmox.erpf.de
+      #   destination:
+      #     host: client-two
+      #     port: 80
+persistence:
+  enabled: true
+  pvc:
+    create: true
+ingress:
+  enabled: true
+  hosts:
+    - host: gitback.erpf.de
+    # - host: pineapple.proxmox.erpf.de
+    # - host: mango.proxmox.erpf.de
+  tls:
+    enabled: true
+  istioGateway:
+    enabled: true
+  certManager:
+    enabled: true
+    issuerRef:
+      name: cloudflare-letsencrypt-prod

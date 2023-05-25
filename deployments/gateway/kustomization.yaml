@@ -1,0 +1,8 @@
+namespace: gateway
+resources:
+  - namespace.yaml
+# helmCharts:
+#   - name: zerotier-gateway
+#     repo: https://jakoberpf.github.io/zerotier-gateway/
+#     releaseName: zerotier-gateway
+#     valuesFile: values.yaml
