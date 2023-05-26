@@ -5,7 +5,7 @@ metadata:
 spec:
   secretName: minio-tls
   issuerRef:
-    name: cloudflare-letsencrypt-staging
+    name: cloudflare-letsencrypt-prod
     kind: ClusterIssuer
   dnsNames:
     - minio.erpf.de

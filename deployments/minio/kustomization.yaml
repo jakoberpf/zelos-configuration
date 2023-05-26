@@ -7,3 +7,5 @@ resources:
   - certificate.yaml
   - gateway.yaml
   - virtualservice.yaml
+  - pv.yaml
+  - pvc.yaml

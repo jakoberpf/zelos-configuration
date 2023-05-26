@@ -38,14 +38,15 @@ spec:
                   name: minio-root-user
                   key: root-password
             # https://min.io/docs/minio/macos/operations/external-iam/configure-keycloak-identity-management.html
-  #       volumeMounts:
-  #       - name: www
-  #         mountPath: /usr/share/nginx/html
-  # volumeClaimTemplates:
-  # - metadata:
-  #     name: www
-  #   spec:
-  #     accessModes: [ "ReadWriteOnce" ]
-  #     resources:
-  #       requests:
-  #         storage: 1Gi
+          volumeMounts:
+            - name: data
+              mountPath: /data
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1000Gi
