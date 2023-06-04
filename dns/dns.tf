@@ -42,6 +42,9 @@ locals {
     "dashboard.netmaker.erpf.de",
     "api.netmaker.erpf.de",
     "broker.netmaker.erpf.de",
+    "console.minio.erpf.de",
+    "minio.erpf.de",
+    "ai.erpf.de"
   ]
 }
 
