@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: local-ai
+  labels:
+    app: local-ai
+    istio-injection: enabled

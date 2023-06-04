@@ -1,0 +1,11 @@
+namespace: local-ai
+resources:
+  - namespace.yaml
+  - certificate.yaml
+  - gateway.yaml
+  - virtualservice.yaml
+helmCharts:
+  - name: local-ai
+    repo: https://go-skynet.github.io/helm-charts/
+    releaseName: local-ai
+    valuesFile: values.yaml
