@@ -1,10 +1,10 @@
+---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: minio
+  name: minio-console
 spec:
   hosts:
-    - minio.erpf.de
     - console.minio.erpf.de
   gateways:
     - minio
@@ -16,4 +16,24 @@ spec:
       - destination:
           port:
             number: 9090
+          host: minio
+
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: minio
+spec:
+  hosts:
+    - minio.erpf.de
+  gateways:
+    - minio
+  http:
+    - match:
+      - uri:
+          prefix: /
+      route:
+      - destination:
+          port:
+            number: 9000
           host: minio
