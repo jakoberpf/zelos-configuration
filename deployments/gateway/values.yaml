@@ -1,20 +1,48 @@
 nginx:
   sites:
     servers:
-      gitback: 
+      # gitback: 
+      #   listen:
+      #     host: gitback.erpf.de
+      #   destination:
+      #     protocol: https
+      #     host: 172.30.175.106
+      #     port: 443
+      gitarchive: 
         listen:
-          host: gitback.erpf.de
+          host: gitarchive.erpf.de
         destination:
           protocol: https
           host: 172.30.175.106
           port: 443
-      # client-one: 
-      #   listen:
-      #     host: pineapple.proxmox.erpf.de
-      #   destination:
-      #     host: 172.30.119.142
-      #     port: 8006
-      # client-two: 
+        parameters: |
+          proxy_set_header Host $host;
+          proxy_set_header X-Forwarded-For $remote_addr;
+          add_header X-Upstream $upstream_addr;
+      pineapple-proxmox: 
+        listen:
+          host: pineapple.proxmox.erpf.de
+        destination:
+          protocol: https
+          host: 172.30.175.190
+          port: 8006
+        parameters: |
+          proxy_http_version 1.1;
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Proto $scheme;
+          proxy_set_header If-Modified-Since "";
+          proxy_set_header If-None-Match "";
+          proxy_set_header Upgrade $http_upgrade;
+          proxy_set_header Connection "Upgrade";
+          proxy_ssl_server_name on;
+          proxy_ssl_name $host;
+          proxy_ssl_verify off;
+          proxy_set_header Host $host;
+          add_header X-Upstream $upstream_addr;
+
+      # mango-proxmox: 
       #   listen:
       #     host: mango.proxmox.erpf.de
       #   destination:
@@ -28,8 +56,9 @@ ingress:
   enabled: true
   hosts:
     - host: gitback.erpf.de
-    # - host: pineapple.proxmox.erpf.de
-    # - host: mango.proxmox.erpf.de
+    - host: gitarchive.erpf.de
+    - host: pineapple.proxmox.erpf.de
+    - host: mango.proxmox.erpf.de
   tls:
     enabled: true
   istioGateway:
