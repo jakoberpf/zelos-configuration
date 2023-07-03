@@ -37,6 +37,9 @@ locals {
   domains_unproxied = [
     "gatus.erpf.de",
     "gitback.erpf.de",
+    "gitarchive.erpf.de",
+    "pineapple.proxmox.erpf.de",
+    "mango.proxmox.erpf.de",
     "teleport.erpf.de",
     "*.teleport.erpf.de",
     "dashboard.netmaker.erpf.de",
